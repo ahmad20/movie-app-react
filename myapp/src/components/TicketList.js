@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashAlt, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrashAlt,
+  faAngleDown,
+  faAngleUp,
+} from "@fortawesome/free-solid-svg-icons";
 
 const TicketList = () => {
   const url = process.env.REACT_APP_BACKEND_URL;
@@ -31,16 +35,16 @@ const TicketList = () => {
 
   const handleCancelTicket = (ticketId) => {
     const requestBody = {
-      id: ticketId
+      id: ticketId,
     };
 
     fetch(`${url}/user/cancel-ticket`, {
       method: "POST",
       headers: {
-        "Authorization" :cookieValue,
-        "Content-Type": "application/json"
+        Authorization: cookieValue,
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify(requestBody),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -67,7 +71,9 @@ const TicketList = () => {
   };
   return (
     <div className="max-w-md mx-auto">
-      {!tickets?.length && <h2 className="text-lg font-bold mb-4">Empty List</h2>}
+      {!tickets?.length && (
+        <h2 className="text-lg font-bold mb-4">Empty List</h2>
+      )}
       {tickets?.length > 0 && (
         <>
           <h2 className="text-lg font-bold mb-4">My Tickets</h2>

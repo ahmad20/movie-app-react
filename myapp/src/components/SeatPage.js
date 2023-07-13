@@ -132,7 +132,15 @@ const SeatPage = () => {
               <div
                 key={seatId}
                 className={seatClassName}
-                onClick={() => handleSeatClick(seatId)}
+                onClick={() => {
+                  if (isBooked) {
+                    alert(
+                      "This seat is already booked. Please choose another seat."
+                    );
+                  } else {
+                    handleSeatClick(seatId);
+                  }
+                }}
               >
                 {seat.Row}
                 {seat.Number}
@@ -172,6 +180,21 @@ const SeatPage = () => {
         </div>
       </div>
 
+      <div className="mt-4">
+        <h4 className="text-lg font-bold">Seat Legend:</h4>
+        <div className="flex items-center mt-2">
+          <div className="w-4 h-4 bg-green-500 mr-2 rounded"></div>
+          <p className="text-sm">Available</p>
+        </div>
+        <div className="flex items-center mt-2">
+          <div className="w-4 h-4 bg-yellow-500 mr-2 rounded"></div>
+          <p className="text-sm">Selected</p>
+        </div>
+        <div className="flex items-center mt-2">
+          <div className="w-4 h-4 bg-red-500 mr-2 rounded"></div>
+          <p className="text-sm">Booked</p>
+        </div>
+      </div>
       <button
         onClick={handleBookSeats}
         className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"

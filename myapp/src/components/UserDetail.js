@@ -47,7 +47,7 @@ const UserDetail = () => {
       });
   }, [cookieValue, url]);
 
-  const [activeTab, setActiveTab] = useState("details");
+  const [activeTab, setActiveTab] = useState("my-ticket");
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -80,9 +80,9 @@ const UserDetail = () => {
             <ul className="flex border-b">
               <li
                 className={`mr-4 cursor-pointer ${
-                  activeTab === "details" ? "border-b-2 border-blue-500" : ""
+                  activeTab === "my-ticket" ? "border-b-2 border-blue-500" : ""
                 }`}
-                onClick={() => handleTabClick("details")}
+                onClick={() => handleTabClick("my-ticket")}
               >
                 My Ticket
               </li>
@@ -104,7 +104,7 @@ const UserDetail = () => {
               </li>
             </ul>
           </div>
-          {activeTab === "details" && (
+          {activeTab === "my-ticket" && (
             <div className="mb-8">
               <TicketList />
             </div>
@@ -113,11 +113,10 @@ const UserDetail = () => {
             <div className="mb-8">
               <h3 className="text-lg font-bold mb-4">Top-up Page</h3>
               {/* Render the top-up form or component */}
-              <TopUpPage/>
-
+              <TopUpPage />
             </div>
           )}
-          {activeTab === "withdraw" &&  (
+          {activeTab === "withdraw" && (
             <div className="mb-8">
               <h3 className="text-lg font-bold mb-4">Withdraw Page</h3>
               {/* Render the withdraw form or component */}
@@ -127,34 +126,6 @@ const UserDetail = () => {
         </>
       )}
     </div>
-    // <div className="max-w-md mx-auto">
-    //   {cookieValue && (
-    //     <>
-    //       <h2 className="text-2xl font-bold mb-4">User Details</h2>
-    //       <div className="mb-4">
-    //         <p>Name: {user.name}</p>
-    //         <p>Username: {user.username}</p>
-    //         <p>Balance: {user.balance}</p>
-    //         <p>Age: {user.age}</p>
-    //       </div>
-    //       <div>
-    //         <Link
-    //           to={'/top-up'}
-    //           className="btn btn-blue mr-4"
-    //         >
-    //           Top-up
-    //         </Link>
-    //         <Link
-    //           to={'/withdraw'}
-    //           className="btn btn-blue"
-    //         >
-    //           Withdraw
-    //         </Link>
-    //       </div>
-    //       <TicketList />
-    //     </>
-    //   )}
-    // </div>
   );
 };
 
